@@ -1,0 +1,118 @@
+/* Global styles */
+body {
+    font-family: Arial, sans-serif;
+  background-image: url("Image.jpg");
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+  }
+  
+  /* Container */
+  .container {
+    background-image: url("Image2.jpg");
+    width: 550px;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    height: auto;
+  }
+  
+  /* Title */
+  h1 {
+    font-size: 30px;
+    margin-bottom: 20px;
+    color: black;
+  }
+  
+  /* Form */
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 0px;
+  }
+  
+  input {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+  }
+  
+  button {
+    background: purple;
+    color: black;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+    font-size: 16px;
+    margin-top: 50px;
+  }
+  
+  button:hover {
+    background: red;
+  }
+  
+  /* Task List */
+  ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  li {
+    background: darkorange;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  /* Task Actions */
+  .task-actions {
+    display: flex;
+    gap: 5px;
+  }
+  
+  .task-actions form {
+    margin: 0;
+  }
+  
+  .task-actions button {
+    font-size: 14px;
+    padding: 5px 10px;
+  }
+  
+  /* Completed Task */
+  .completed {
+    text-decoration: line-through;
+    color: black;
+  }
+  
+  .nav-links {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 50px;
+    margin-bottom: 50px;
+  }
+  
+  .nav-links a {
+    text-decoration: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    font-size: 16px;
+    background-color:blueviolet;
+    color: black;
+    transition: 0.3s;
+  }
+  
+  .nav-links a:hover {
+    background-color: darkorange;
+  }
+  

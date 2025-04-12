@@ -12,13 +12,8 @@ const pool = new Pool({
     port: process.env.DB_PORT,
 });
 
-pool.connect((err, client, release) => {
-    if (err) {
-        console.error("Error acquiring client", err.stack);
-        return;
-    }
+pool.on("connect", () => {
     console.log("Connected to PostgreSQL database");
-    release();
 });
 
 // Ensure table exists
@@ -27,8 +22,9 @@ const initializeDB = async () => {
         await pool.query(`
             CREATE TABLE IF NOT EXISTS tasks (
                 id SERIAL PRIMARY KEY,
-                name VARCHAR(255) NOT NULL,
+                name VARCHAR(100) NOT NULL,
                 description TEXT NOT NULL,
+                priority VARCHAR(20) DEFAULT 'normal' NOT NULL,
                 completed BOOLEAN DEFAULT false
             );
         `);

@@ -16,16 +16,23 @@
             <a href="/all-tasks">View All Tasks</a>
         </div>
 
+        <div id="errorMessage" style="color: red;"></div>
+
         <form action="/add-task" method="post">
-            <input type="text" name="name" placeholder="Task Name" required>
-            <input type="text" name="description" placeholder="Task Description" required>
+            <input type="text" name="name" id="addName" placeholder="Task Name" required>
+            <input type="text" name="description" id="addDesc" placeholder="Task Description" required>
+            <select name="priority" required>
+                <option value="High">High 🔥</option>
+                <option value="Medium" selected>Medium ⚖️</option>
+                <option value="Low">Low 🧊</option>
+            </select>
             <button type="submit">Add Task</button>
         </form>
-
         <ul>
             <% tasks.forEach(task => { %>
                 <li class="<%= task.completed ? 'completed' : '' %>">
                     <%= task.name %> - <%= task.description %>
+                    <span style="font-weight: bold; color: purple;">[<%= task.priority %>]</span>
                     <div class="task-actions">
                         <form action="/toggle-task/<%= task.id %>" method="post">
                             <button type="submit"><%= task.completed ? 'Undo' : 'Complete' %></button>
@@ -39,29 +46,68 @@
             <% }); %>
         </ul>
 
-        <!-- Hidden Update Form -->
         <div id="updateFormContainer" style="display: none;">
             <h2>Update Task</h2>
             <form id="updateForm" method="post">
                 <input type="hidden" name="id" id="updateTaskId">
                 <input type="text" name="name" id="updateTaskName" required>
                 <input type="text" name="description" id="updateTaskDesc" required>
+                <select name="priority" id="updateTaskPriority" required>
+                    <option value="High">High 🔥</option>
+                    <option value="Medium">Medium ⚖️</option>
+                    <option value="Low">Low 🧊</option>
+                </select>
                 <button type="submit">Update</button>
                 <button type="button" onclick="hideUpdateForm()">Cancel</button>
             </form>
+            
         </div>
 
         <script>
-            function showUpdateForm(id, name, description) {
-                document.getElementById("updateForm").action = "/update-task/" + id;
-                document.getElementById("updateTaskId").value = id;
-                document.getElementById("updateTaskName").value = name;
-                document.getElementById("updateTaskDesc").value = description;
+            const params = new URLSearchParams(window.location.search);
+
+            if (params.get('error')) {
+                document.getElementById("errorMessage").innerText = decodeURIComponent(params.get('error'));
+            }
+            if (params.get('name')) {
+                document.getElementById("addName").value = decodeURIComponent(params.get('name'));
+            }
+            if (params.get('description')) {
+                document.getElementById("addDesc").value = decodeURIComponent(params.get('description'));
+            }
+
+            if (params.get('updateError')) {
+                document.getElementById("updateErrorMessage").innerText = decodeURIComponent(params.get('updateError'));
+                document.getElementById("updateFormContainer").style.display = "block";
+            }
+            if (params.get('updateName')) {
+                document.getElementById("updateTaskName").value = decodeURIComponent(params.get('updateName'));
+            }
+            if (params.get('updateDesc')) {
+                document.getElementById("updateTaskDesc").value = decodeURIComponent(params.get('updateDesc'));
+            }
+            if (params.get('id')) {
+                document.getElementById("updateTaskId").value = params.get('id');
+                document.getElementById("updateForm").action = "/update-task/" + params.get('id');
                 document.getElementById("updateFormContainer").style.display = "block";
             }
 
+            function showUpdateForm(id, name, description, priority) {
+    document.getElementById("updateForm").action = "/update-task/" + id;
+    document.getElementById("updateTaskId").value = id;
+    document.getElementById("updateTaskName").value = name;
+    document.getElementById("updateTaskDesc").value = description;
+    document.getElementById("updateTaskPriority").value = priority;
+    document.getElementById("updateFormContainer").style.display = "block";
+}
+
+
             function hideUpdateForm() {
                 document.getElementById("updateFormContainer").style.display = "none";
+            }
+
+            if (history.replaceState) {
+                history.replaceState(null, '', window.location.pathname);
             }
         </script>
     </div>

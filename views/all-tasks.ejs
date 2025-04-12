@@ -14,7 +14,7 @@
             <% tasks.forEach(task => { %>
                 <li class="<%= task.completed ? 'completed' : '' %>">
                     <%= task.name %> - <%= task.description %>
-                    
+                    <span style="font-weight: bold; color: purple;">[<%= task.priority %>]</span>
                     <form action="/toggle-task/<%= task.id %>" method="post" style="display:inline;">
                         <button type="submit"><%= task.completed ? "Undo" : "Complete" %></button>
                     </form>

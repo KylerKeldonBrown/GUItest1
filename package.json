@@ -8,7 +8,7 @@
     "start": "nodemon app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Dylan Castellanos",
+  "author": "KylerBrown",
   "license": "ISC",
   "devDependencies": {
     "express": "^4.21.2",

@@ -1,118 +1,155 @@
-/* Global styles */
+/* General reset and base styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Arial', sans-serif;
+}
+
 body {
-    font-family: Arial, sans-serif;
-  background-image: url("Image.jpg");
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-  }
-  
-  /* Container */
-  .container {
-    background-image: url("Image2.jpg");
-    width: 550px;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    text-align: center;
-    height: auto;
-  }
-  
-  /* Title */
-  h1 {
-    font-size: 30px;
-    margin-bottom: 20px;
-    color: black;
-  }
-  
-  /* Form */
-  form {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    margin-bottom: 0px;
-  }
-  
-  input {
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    font-size: 16px;
-  }
-  
-  button {
-    background: purple;
-    color: black;
-    border: none;
-    padding: 10px;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: 0.3s;
-    font-size: 16px;
-    margin-top: 50px;
-  }
-  
-  button:hover {
-    background: red;
-  }
-  
-  /* Task List */
-  ul {
-    list-style: none;
-    padding: 0;
-  }
-  
-  li {
-    background: darkorange;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 10px;
-  }
-  
-  /* Task Actions */
-  .task-actions {
-    display: flex;
-    gap: 5px;
-  }
-  
-  .task-actions form {
-    margin: 0;
-  }
-  
-  .task-actions button {
-    font-size: 14px;
-    padding: 5px 10px;
-  }
-  
-  /* Completed Task */
-  .completed {
-    text-decoration: line-through;
-    color: black;
-  }
-  
-  .nav-links {
-    display: flex;
-    justify-content: space-around;
-    margin-top: 50px;
-    margin-bottom: 50px;
-  }
-  
-  .nav-links a {
-    text-decoration: none;
-    padding: 10px 15px;
-    border-radius: 5px;
-    font-size: 16px;
-    background-color:blueviolet;
-    color: black;
-    transition: 0.3s;
-  }
-  
-  .nav-links a:hover {
-    background-color: darkorange;
-  }
-  
+  background-color: #f4f4f9;
+  color: #333;
+  line-height: 1.6;
+  font-size: 16px;
+  padding: 20px;
+}
+
+h1 {
+  color: #28a745;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.nav-links a {
+  margin-right: 15px;
+  color: #007bff;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.nav-links a:hover {
+  text-decoration: underline;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  background-color: #d4edda;
+  padding: 15px;
+  margin: 10px 0;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+li.completed {
+  background-color: #c3e6cb;
+  text-decoration: line-through;
+  opacity: 0.7;
+}
+
+.priority-label {
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.priority-high {
+  background-color: #f8d7da;
+  color: #721c24;
+}
+
+.priority-medium {
+  background-color: #fff3cd;
+  color: #856404;
+}
+
+.priority-low {
+  background-color: #d1ecf1;
+  color: #0c5460;
+}
+
+li button {
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-size: 14px;
+  margin-right: 5px;
+}
+
+li button:hover {
+  background-color: #bd2130;
+}
+
+.task-actions form {
+  display: inline;
+}
+
+form.task-form {
+  margin-bottom: 20px;
+}
+
+input[type="text"],
+input[type="textarea"],
+select {
+  padding: 8px;
+  margin-bottom: 10px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  width: 100%;
+}
+
+input[type="submit"],
+button {
+  background-color: #28a745;
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+input[type="submit"]:hover,
+button:hover {
+  background-color: #218838;
+}
+
+button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+footer {
+  margin-top: 20px;
+  text-align: center;
+  font-size: 14px;
+  color: #777;
+}
+
+#updateFormContainer {
+  margin-top: 30px;
+  padding: 20px;
+  background-color: #fff3cd;
+  border: 1px solid #ffeeba;
+  border-radius: 8px;
+}
